@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Pro AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <header>
+            <h1>SUDOKU<span>PRO</span></h1>
+            <div class="timer-container">
+                <span id="timer">00:00</span>
+                <small>Best: <span id="best-time">--:--</span></small>
+            </div>
+        </header>
+
+        <main class="game-container">
+            <section class="board-section">
+                <div id="grid" class="sudoku-grid"></div>
+            </section>
+
+            <section class="sidebar">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <label>Difficulty</label>
+                        <span id="current-level">Medium</span>
+                    </div>
+                    <div class="stat-card">
+                        <label>Mistakes</label>
+                        <span id="mistakes">0/3</span>
+                    </div>
+                </div>
+
+                <div class="mode-toggle">
+                    <button id="note-mode-btn" onclick="toggleNoteMode()">
+                        Notes Mode: <span id="note-status">OFF</span>
+                    </button>
+                </div>
+
+                <div class="number-pad" id="number-pad"></div>
+
+                <div class="action-buttons">
+                    <button id="hint-btn" onclick="giveHint()">💡 Hint</button>
+                    <button id="reset-btn" class="secondary">↺ Reset</button>
+                    <button onclick="startGame('easy')">Easy</button>
+                    <button onclick="startGame('medium')">Medium</button>
+                    <button onclick="startGame('hard')">Hard</button>
+                    <button onclick="startGame()" class="primary-btn">New Game</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <h2 id="modal-title">Victory!</h2>
+            <p id="modal-msg"></p>
+            <button onclick="closeModal()" class="primary-btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
