@@ -1,0 +1,108 @@
+:root {
+    --bg-dark: #0f172a;
+    --side-dark: #1e293b;
+    --accent: #22d3ee;
+    --text-bright: #f8fafc;
+    --text-muted: #94a3b8;
+    --error: #f43f5e;
+    --cell-bg: #334155;
+    --cell-border: #475569;
+}
+
+* { box-sizing: border-box; margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body { background: var(--bg-dark); color: var(--text-bright); height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+
+.app-window {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    width: 95vw;
+    max-width: 1100px;
+    height: 85vh;
+    background: var(--side-dark);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+
+.sidebar {
+    padding: 2rem;
+    border-right: 1px solid var(--cell-border);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.logo { font-size: 1.5rem; color: var(--accent); display: flex; gap: 10px; align-items: center; }
+
+.game-controls { display: flex; flex-direction: column; gap: 1rem; }
+
+.difficulty-select { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; background: var(--bg-dark); padding: 5px; border-radius: 8px; }
+
+.diff-btn { 
+    background: transparent; border: none; color: var(--text-muted); 
+    padding: 8px; font-size: 0.8rem; cursor: pointer; border-radius: 5px; 
+}
+
+.diff-btn.active { background: var(--cell-bg); color: var(--accent); font-weight: bold; }
+
+.action-btn { 
+    padding: 12px; border-radius: 8px; border: none; cursor: pointer; 
+    font-weight: 600; transition: 0.3s; background: var(--cell-bg); color: white;
+}
+
+.action-btn.primary { background: var(--accent); color: var(--bg-dark); }
+
+.scoring-box .stat { margin-bottom: 1rem; }
+.label { display: block; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+#score, #timer, #mistakes { font-size: 1.6rem; font-weight: bold; font-family: monospace; }
+
+/* Grid Styling */
+.main-stage { display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-dark); }
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    width: 500px;
+    height: 500px;
+    border: 3px solid var(--accent);
+    background: var(--accent);
+    gap: 1px;
+}
+
+.cell {
+    background: var(--side-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.cell:nth-child(3n) { border-right: 2px solid var(--accent); }
+.cell:nth-child(9n) { border-right: none; }
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54) { border-bottom: 2px solid var(--accent); }
+
+.cell.selected { background: #0891b2; color: white; }
+.cell.hint-bg { background: #164e63; }
+.cell.fixed { font-weight: bold; color: var(--text-muted); cursor: default; }
+.cell.error { color: var(--error); background: #450a0a; }
+
+/* Numpad */
+.numpad { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 2rem; }
+.num, .tool-btn { 
+    width: 50px; height: 50px; border-radius: 8px; border: none; 
+    background: var(--side-dark); color: white; font-size: 1.2rem; cursor: pointer;
+}
+.num:hover { background: var(--accent); color: var(--bg-dark); }
+
+/* Modal */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 100; }
+.modal-content { 
+    background: var(--side-dark); width: 350px; margin: 100px auto; 
+    padding: 2rem; border-radius: 12px; border: 1px solid var(--accent);
+}
+.modal-content ul { list-style: none; padding: 0; margin: 1rem 0; }
+.modal-content li { padding: 8px 0; border-bottom: 1px solid var(--cell-border); display: flex; justify-content: space-between; }

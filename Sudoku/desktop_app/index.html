@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Ultra</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-window">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-th"></i>
+                <span>SUDOKU<b>ULTRA</b></span>
+            </div>
+            <nav class="game-controls">
+                <div class="difficulty-select">
+                    <button class="diff-btn active" data-lvl="easy">Easy</button>
+                    <button class="diff-btn" data-lvl="medium">Medium</button>
+                    <button class="diff-btn" data-lvl="hard">Hard</button>
+                </div>
+                <button id="new-game-btn" class="action-btn primary"><i class="fas fa-plus"></i> New Game</button>
+                <button id="show-leaderboard" class="action-btn"><i class="fas fa-trophy"></i> Leaderboard</button>
+            </nav>
+            <div class="scoring-box">
+                <div class="stat"><span class="label">Score</span><span id="score">0000</span></div>
+                <div class="stat"><span class="label">Mistakes</span><span id="mistakes">0 / 3</span></div>
+                <div class="stat"><span class="label">Time</span><span id="timer">00:00</span></div>
+            </div>
+        </aside>
+
+        <main class="main-stage">
+            <div id="grid-container"></div>
+            <div class="numpad">
+                <button class="num">1</button><button class="num">2</button><button class="num">3</button>
+                <button class="num">4</button><button class="num">5</button><button class="num">6</button>
+                <button class="num">7</button><button class="num">8</button><button class="num">9</button>
+                <button id="erase-btn" class="tool-btn"><i class="fas fa-eraser"></i></button>
+                <button id="hint-btn" class="tool-btn"><i class="fas fa-lightbulb"></i></button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboard-modal" class="modal">
+        <div class="modal-content">
+            <h3>Top Performances</h3>
+            <ul id="leaderboard-list"></ul>
+            <button class="close-modal">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
